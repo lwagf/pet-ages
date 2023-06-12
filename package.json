@@ -1,0 +1,21 @@
+{
+  "name": "pet-ages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "serverless deploy -s dev",
+    "remove": "serverless remove -s dev",
+    "invoke-age-get": "serverless invoke local -s dev -f age_get -p functions/age_get/event.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "serverless": "^3.18.0",
+    "serverless-plugin-optimize": "^4.2.1-rc.1"
+  }
+}
