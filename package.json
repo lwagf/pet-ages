@@ -7,14 +7,23 @@
     "deploy": "serverless deploy -s dev",
     "remove": "serverless remove -s dev",
     "invoke-age-get": "serverless invoke local -s dev -f age_get -p functions/age_get/event.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest tests"
   },
   "author": "",
   "license": "ISC",
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": ["@babel/plugin-transform-modules-commonjs"]
+      }
+    }
+  },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "jest": "^29.5.0",
     "serverless": "^3.18.0",
     "serverless-plugin-optimize": "^4.2.1-rc.1"
   }
