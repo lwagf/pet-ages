@@ -12,6 +12,9 @@ export default class AgeCalculator {
   }
 
   static convertHumanYears(humanYears) {
+    if (Number.isNaN(parseInt(humanYears))) {
+      throw new Error(`convertHumanYears expects an integer; Received ${humanYears}`);
+    }
     let animalYears = 0;
     if (humanYears >= 1) {
       animalYears += this.firstYearIncrement;
