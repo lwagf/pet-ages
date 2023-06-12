@@ -1,0 +1,32 @@
+service: pet-ages
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ${self:custom.envpath.region}
+
+custom:
+  envpath: "${file(./serverless.env.yml):${opt:stage, self:provider.stage}}"
+
+package:
+  individually: true
+
+plugins:
+  - serverless-plugin-optimize
+
+functions:
+  age_get:
+    handler: functions/age_get/index.handler
+    timeout: 3
+    memorySize: 128
+    events:
+      - http:
+          path: /age
+          method: get
+          cors:
+            origin: "*"
+            headers:
+              - accept
+              - authorization
+              - content-type
+          integration: lambda-proxy
